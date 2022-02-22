@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title> Propose Tag </title>
+	</head>
+	<body>
+		<h2> Who do you wish to tag for this photo? </h2>
+		<div>
+			<form action="/submitTag" method="post">
+				<b> PhotoID: </b> {{image.photoID}} <br/>
+                <b> Owner:  </b> {{image.photoOwner}} <br/>
+                <b> Timestamp:  </b> {{image.timestamp}} <br/>
+                <b> Tagged: </b>
+                {% for person in image.tags %}
+                    {{person.fname}} {{person.lname}} <br/>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                {% endfor %} <br/>
+                <img src="/image/{{image.filePath}}" width="300"/>
+                <br>
+                <br>
+                <input type="text" name="{{image.photoID}}" placeholder="User to tag" required/>
+                <br/>
+                <input type="submit" value="Tag"/>
+            </form>
+        </div>
+        {% if message %}
+        	{{message}}<br/><br/>
+        {% endif %}
+        <a href="/images">Go Back</a>
+        <br/><br/>
+        <a href="/">Go Home</a>
+    </body>
+</html>

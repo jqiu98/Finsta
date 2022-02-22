@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title> Close Friend Groups </title>
+	</head>
+	<body>
+		<h1> Your Close Friend Groups </h1>
+		<br/>
+		<br/>
+		<h3> Select a friend group </h3>
+		<div>
+			<form action="/inviteFriend" method="post">
+				<ul>
+					{% for group in groups %}
+						<li> {{group.groupName}} owned by {{group.groupOwner}}
+							<input type="radio" name="group" value="{{group.groupName}} ///////////////////// {{group.groupOwner}}"/>
+						</li>
+					{% endfor %}
+				</ul>
+				<input type="submit" value="Select"/>
+			</form>
+		</div>
+		<br/><br/>
+		<a href="/">Go Back</a>
+	</body>
+</html>

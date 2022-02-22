@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title> Follow </title>
+	</head>
+	<body>
+		<h1> Follow Requests </h1>
+		<div>
+			<form action="/followAccept" method="post">
+				<ul>
+				{% for aFollower in myFollowers %}
+					<li>{{aFollower.followerUsername}}
+						<input name={{aFollower.followerUsername}} type="radio" value="Accept"/> Accept
+						<input name={{aFollower.followerUsername}} type="radio" value="Decline"/> Decline
+					</li>
+				{% endfor %}
+				</ul>
+				<input type="reset"/>
+				<input type="submit" value="Confirm"/>
+			</form>
+		</div>
+		<br/>
+		<a href="/follows">Go back</a>
+		<a href="/">Go home</a>
+	</body>
+</html>

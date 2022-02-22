@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title> Tag </title>
+	</head>
+	<body>
+		<h1> Manage Tags </h1>
+		<div>
+			<form action="/tagRequest" method="post">
+				{% for image in images %}
+					<b> PhotoID: </b> {{image.photoID}} <br/>
+	            	<b> Owner:  </b> {{image.photoOwner}} <br/>
+	            	<b> Timestamp:  </b> {{image.timestamp}} <br/>
+	            	<b> Tagged: </b>
+                    {% for person in image.tags %}
+                        {{person.fname}} {{person.lname}} <br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    {% endfor %} <br/>
+	            	<img src="/image/{{image.filePath}}" width="300"/>
+	            	<input type="radio" name="{{image.photoID}}" value="Accept"/> Accept
+	            	<input type="radio" name="{{image.photoID}}" value="Decline"/> Decline
+	            	<br/>
+	            	<br/>
+	            {% endfor %}
+	            <input type="reset">
+	            <input type="submit" value="Confirm"/>
+	        </form>
+	    </div>
+	    <a href="/">Go Back</a>
+	</body>
+</html>

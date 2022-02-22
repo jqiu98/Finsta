@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Finstagram</title>
+    </head>
+    <body>
+        <h1>Image Gallery</h1>
+        <div>
+            <form action="/proposeTag" method="post">
+                {% for image in images %}
+                    <b> PhotoID: </b> {{image.photoID}} <br/>
+                    <b> Owner:  </b> {{image.photoOwner}} <br/>
+                    <b> Timestamp:  </b> {{image.timestamp}} <br/>
+                    <b> Tagged: </b>
+                    {% for person in image.tags %}
+                        {{person.fname}} {{person.lname}} <br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    {% endfor %} <br/>
+                    <img src="/image/{{image.filePath}}" width="300"/>
+                    <input type="submit" name="{{image.photoID}}" value="Tag Someone"/>
+                    <br/>
+                    <br/>
+                {% endfor %}
+        </div>
+        <a href="/">Go back</a>
+    </body>
+</html>

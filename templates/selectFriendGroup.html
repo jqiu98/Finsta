@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title> Image Upload </title>
+	</head>
+	<body>
+		<h1> Select Friend Groups for Photo </h1>
+		<div>
+			<img src="/image/{{image_path}}" width="300"/>
+			<br/>
+			Which friend groups do you want to share the photo with?
+			<br/>
+			<form action="/uploadFriendGroup" method="post">
+				<ul>
+					{% for group in groups %}
+						<li> {{group.groupName}} owned by {{group.groupOwner}}
+							<input type="checkbox" name="{{group.groupName}} ///////////////////// {{group.groupOwner}}">
+						</li>
+					{% endfor %}
+				</ul>
+				<input type="submit" value="Confirm"/>
+			</form>
+		</div>
+		{% if error %}
+			{{error}}
+		{% endif %}
+	</body>
+</html>

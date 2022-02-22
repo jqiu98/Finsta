@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title> Invite Friend </title>
+	</head>
+	<body>
+		<h1> Invite Someone to the Friend Group </h1>
+		<h2> {{group.groupName}} owned by {{group.groupOwner}} </h2>
+		<div>
+			<form action="/updateFriendGroup" method="post">
+				<input type="text" name="{{group.groupName}} ///////////////////// {{group.groupOwner}}" placeholder="Enter the user to invite" required/>
+				<input type="submit" value="Invite"/>
+			</form>
+		</div>
+		<br/>
+		{% if message %}
+			{{message}}
+		{% endif %}
+		<br/><br/>
+		<a href="/closeFriendGroup">Go Back</a>
+		<br/><br/>
+		<a href="/">Go Home</a>
+	</body>
+</html>
